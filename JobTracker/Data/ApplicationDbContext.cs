@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using JobTracker.Models; // For entity classes
-
 namespace JobTracker;
 
+/*This class serves as the bridge between the app and the database.
+*/
 public class ApplicationDbContext : DbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext>
@@ -10,6 +10,8 @@ public class ApplicationDbContext : DbContext
     {
     }
 
-    public DbSet<JobApplication> JobApplications { get; set; }
+/*Creates an empty table to be filled with JobApplication entities.
+*/
+    public DbSet<JobApplication> Job_Applications { get; set; }
 
 }
