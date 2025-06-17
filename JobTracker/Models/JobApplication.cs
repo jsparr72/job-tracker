@@ -12,9 +12,8 @@ public class JobApplication
 
     public JobApplication(int Id, string UserId, string Company,
             string JobTitle, DateTime ApplicationDate, string Status,
-            string Notes = null)
+            string Notes)
     {
-
         this.Id = Id;
         this.UserId = UserId;
         this.Company = Company;

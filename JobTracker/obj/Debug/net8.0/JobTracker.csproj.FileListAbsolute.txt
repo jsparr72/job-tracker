@@ -1,0 +1,9 @@
+C:\Users\sparr\Desktop\Programming\Job_Tracker\JobTracker\obj\Debug\net8.0\JobTracker.csproj.AssemblyReference.cache
+C:\Users\sparr\Desktop\Programming\Job_Tracker\JobTracker\obj\Debug\net8.0\JobTracker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sparr\Desktop\Programming\Job_Tracker\JobTracker\obj\Debug\net8.0\JobTracker.AssemblyInfoInputs.cache
+C:\Users\sparr\Desktop\Programming\Job_Tracker\JobTracker\obj\Debug\net8.0\JobTracker.AssemblyInfo.cs
+C:\Users\sparr\Desktop\Programming\Job_Tracker\JobTracker\obj\Debug\net8.0\JobTracker.csproj.CoreCompileInputs.cache
+C:\Users\sparr\Desktop\Programming\Job_Tracker\JobTracker\obj\Debug\net8.0\JobTracker.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\sparr\Desktop\Programming\Job_Tracker\JobTracker\obj\Debug\net8.0\JobTracker.RazorAssemblyInfo.cache
+C:\Users\sparr\Desktop\Programming\Job_Tracker\JobTracker\obj\Debug\net8.0\JobTracker.RazorAssemblyInfo.cs
+C:\Users\sparr\Desktop\Programming\Job_Tracker\JobTracker\obj\Debug\net8.0\JobTracker.sourcelink.json
