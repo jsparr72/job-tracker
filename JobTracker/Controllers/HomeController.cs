@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using JobTracker.Models;
 
 namespace JobTracker.Controllers;
@@ -27,6 +28,24 @@ public class HomeController : Controller
     {
         return View();
     }
+
+    public IActionResult CreateEditApplications()
+    {
+        return View();
+    }
+
+    // public IActionResult Create()
+    // {
+    //     var model = new JobApplication
+    //     {
+    //         Statuses = new List<SelectListItem>
+    //         {
+    //             new SelectListItem { Value = "1", Text = "Not Applied" },
+    //             new SelectListItem {Value = "2", Text = "Applied"}
+    //         }
+    //     };
+    //     return View(model);
+    // }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
