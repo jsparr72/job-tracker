@@ -8,15 +8,15 @@ namespace JobTracker.Models
         public string? Company { get; set; }
         public string? JobTitle { get; set; }
         public DateTime ApplicationDate { get; set; }
-        public int Status { get; set; } // Applied, Interview, Rejected, etc.
-        public static List<SelectListItem>? Statuses { get; } = new()
-        {
-            new SelectListItem { Value = "1", Text = "Not Applied" },
-            new SelectListItem {Value = "2", Text = "Applied"},
-            new SelectListItem {Value = "3", Text = "Interview"},
-            new SelectListItem {Value = "4", Text = "Rejected" },
-            new SelectListItem {Value = "5", Text = "Accepted"}
-        };
+        public string? Status { get; set; } // Applied, Interview, Rejected, etc.
+        public static List<SelectListItem>? Statuses { get; } =
+        [
+            new SelectListItem { Value = "Not Yet Applied"},
+            new SelectListItem {Value = "Applied"},
+            new SelectListItem {Value = "Interview"},
+            new SelectListItem {Value = "Rejected"},
+            new SelectListItem {Value = "Accepted" }
+        ];
         public string? Notes { get; set; }
     }
 }

@@ -8,21 +8,21 @@
     <h1 class="display-4">Add/Edit an Application</h1>
 </div>
 
-<form>
-    <label>ID</label>
-    <input class="form-control" type="number" placeholder="0" asp-for="ID"/>
+<form asp-action="NewApplication" asp-controller="Home">
+    @* <label>ID</label>
+    <input class="form-control" type="number" placeholder="0" asp-for="ID"/> *@
 
-    <label class="mt-4">UserId</label>
+    <label >UserId</label>
     <input class="form-control" type="number" placeholder="0" asp-for="UserId"/>
 
     <label class="mt-4">Company</label>
-    <input class="form-control" type="text" placeholder="Enter name of company..." asp-for="Company"/>
+    <input class="form-control" type="text" placeholder="Enter name of company" asp-for="Company"/>
 
     <label class="mt-4">JobTitle</label>
-    <input class="form-control" type="text" placeholder="Enter job title..." asp-for="JobTitle"/>
+    <input class="form-control" type="text" placeholder="Enter job title" asp-for="JobTitle"/>
 
     <label class="mt-4">ApplicationDate</label>
-    <input class="form-control" type="date" placeholder="1/1/2025" asp-for="ApplicationDate"/>
+    <input class="form-control" type="date" asp-for="ApplicationDate"/>
 
     <label class="mt-4">Status</label>
     <select class="form-control" asp-items="JobApplication.Statuses" asp-for="Status"></select>
@@ -32,5 +32,5 @@
     <label class="mt-4">Notes</label>
     <input class="form-control" type="text" placeholder="" asp-for="Notes"/>
 
-    <button class="btn btn-primary mt-4" type="submit">Add new application</button>
+    <button class="btn btn-primary mt-4" type="submit">Add New Application</button>
 </form>

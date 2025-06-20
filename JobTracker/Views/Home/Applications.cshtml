@@ -2,8 +2,68 @@
     ViewData["Title"] = "Your Applications";
 }
 
+@model List<JobApplication>
+
 <div class="text-center">
     <h1 class="display-4">Your Applications</h1>
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    User ID
+                </th>
+                <th>
+                    Company
+                </th>
+                <th>
+                    Job Title
+                </th>
+                <th>
+                    Date Applied
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    Notes
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var JobApplication in Model) 
+                {
+                    <tr>
+                        <td>
+                            @JobApplication.ID
+                        </td>
+                        <td>
+                            @JobApplication.UserId
+                        </td>
+                        <td>
+                            @JobApplication.Company
+                        </td>
+                        <td>
+                            @JobApplication.JobTitle
+                        </td>
+                        <td>
+                            @JobApplication.ApplicationDate.Date
+                        </td>
+                        <td>
+                            @JobApplication.Status
+                        </td>
+                        <td>
+                            @JobApplication.Notes
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
 </div>
 <div class="position-absolute top-20 start-0 m-1">
     <a href="/home/CreateEditApplications" class="btn btn-success">Add/Edit Applications</a>

@@ -8,10 +8,12 @@ namespace JobTracker.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly ApplicationDbContext _context;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
     {
         _logger = logger;
+        _context = context;
     }
 
     public IActionResult Index()
@@ -26,12 +28,20 @@ public class HomeController : Controller
 
     public IActionResult Applications()
     {
-        return View();
+        var ApplicationsTable = _context.Job_Applications.ToList();
+        return View(ApplicationsTable);
     }
 
     public IActionResult CreateEditApplications()
     {
         return View();
+    }
+
+    public IActionResult NewApplication(JobApplication model)
+    {
+        _context.Job_Applications.Add(model);
+        _context.SaveChanges();
+        return RedirectToAction("Applications");
     }
 
     // public IActionResult Create()
