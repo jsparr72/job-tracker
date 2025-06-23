@@ -11,11 +11,11 @@ namespace JobTracker.Models
         public string? Status { get; set; } // Applied, Interview, Rejected, etc.
         public static List<SelectListItem>? Statuses { get; } =
         [
-            new SelectListItem { Value = "Not Yet Applied"},
-            new SelectListItem {Value = "Applied"},
-            new SelectListItem {Value = "Interview"},
-            new SelectListItem {Value = "Rejected"},
-            new SelectListItem {Value = "Accepted" }
+            new SelectListItem("Not Applied", "Not Applied"),
+            new SelectListItem("Applied", "Applied"),
+            new SelectListItem("Interview", "Interview"),
+            new SelectListItem("Rejected", "Rejected"),
+            new SelectListItem("Accepted", "Accepted")
         ];
         public string? Notes { get; set; }
     }
