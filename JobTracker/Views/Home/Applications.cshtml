@@ -51,7 +51,7 @@
                             @JobApplication.JobTitle
                         </td>
                         <td>
-                            @JobApplication.ApplicationDate.Date
+                            @JobApplication.ApplicationDate.ToString("d") <!--Removes time from date-->
                         </td>
                         <td>
                             @JobApplication.Status
