@@ -1,0 +1,35 @@
+@{
+    ViewData["Title"] = "Edit an Application";
+}
+
+@model JobTracker.Models.JobApplication
+
+<div class="text-center">
+    <h1 class="display-4">Edit an Application</h1>
+</div>
+
+<form asp-action="ModifyApplication" asp-controller="Home">
+    <input hidden class="form-control" type="number" asp-for="ID"/>
+
+    <label >UserId</label>
+    <input class="form-control" type="number" placeholder="0" asp-for="UserId"/>
+
+    <label class="mt-4">Company</label>
+    <input class="form-control" type="text" placeholder="Enter name of company" asp-for="Company"/>
+
+    <label class="mt-4">JobTitle</label>
+    <input class="form-control" type="text" placeholder="Enter job title" asp-for="JobTitle"/>
+
+    <label class="mt-4">ApplicationDate</label>
+    <input class="form-control" type="date" asp-for="ApplicationDate"/>
+
+    <label class="mt-4">Status</label>
+    <select class="form-control" asp-items="JobApplication.Statuses" asp-for="Status"></select>
+        <option value="">--Select Status--</option>
+    </select>
+
+    <label class="mt-4">Notes</label>
+    <input class="form-control" type="text" placeholder="" asp-for="Notes"/>
+
+    <button class="btn btn-primary mt-4" type="submit">Save Changes</button>
+</form>

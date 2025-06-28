@@ -9,7 +9,7 @@
 </div>
 
 <div class="text-start">
-    <a href="/home/CreateEditApplications" class="btn btn-success ms-2.5">Add/Edit Applications</a>
+    <a href="/home/CreateApplication" class="btn btn-success ms-2.5">Add New Application</a>
 </div>
 
 <table class="table">
@@ -63,6 +63,10 @@
                     </td>
                     <td>
                         @JobApplication.Notes
+                    </td>
+                    <td>
+                        <a asp-action="EditApplication" asp-route-id="@JobApplication.ID">Edit</a>
+                        <a asp-action="DeleteApplication" asp-route-id="@JobApplication.ID">Delete</a>
                     </td>
                 </tr>
             }

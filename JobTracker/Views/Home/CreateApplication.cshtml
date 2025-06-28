@@ -1,14 +1,16 @@
 @{
-    ViewData["Title"] = "Add/Edit an Application";
+    ViewData["Title"] = "Add an Application";
 }
 
 @model JobTracker.Models.JobApplication
 
 <div class="text-center">
-    <h1 class="display-4">Add/Edit an Application</h1>
+    <h1 class="display-4">Add an Application</h1>
 </div>
 
 <form asp-action="NewApplication" asp-controller="Home">
+    <input hidden class="form-control" type="number" asp-for="ID"/>
+    
     <label >UserId</label>
     <input class="form-control" type="number" placeholder="0" asp-for="UserId"/>
 
