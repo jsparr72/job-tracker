@@ -1,26 +1,20 @@
 @{
-    ViewData["Title"] = "Your Applications";
+    ViewData["Title"] = "Applications";
 }
 
 @model List<JobApplication>
 
 <div class="text-center">
-    <h1 class="display-4">Your Applications</h1>
+    <h1 class="display-4 mb-3">Your Applications</h1>
 </div>
 
-<div class="text-start">
-    <a href="/home/CreateApplication" class="btn btn-success ms-2.5">Add New Application</a>
+<div class="text-center">
+    <a href="/home/CreateApplication" class="btn btn-success mb-4">Add New Application</a>
 </div>
 
 <table class="table">
     <thead>
         <tr>
-            <th>
-                ID
-            </th>
-            <th>
-                User ID
-            </th>
             <th>
                 Company
             </th>
@@ -36,6 +30,9 @@
             <th>
                 Notes
             </th>
+            <th>
+
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -43,12 +40,6 @@
             foreach (var JobApplication in Model) 
             {
                 <tr>
-                    <td>
-                        @JobApplication.ID
-                    </td>
-                    <td>
-                        @JobApplication.UserId
-                    </td>
                     <td>
                         @JobApplication.Company
                     </td>
@@ -65,8 +56,8 @@
                         @JobApplication.Notes
                     </td>
                     <td>
-                        <a asp-action="EditApplication" asp-route-id="@JobApplication.ID">Edit</a>
-                        <a asp-action="DeleteApplication" asp-route-id="@JobApplication.ID">Delete</a>
+                        <a class="btn btn-primary" asp-action="EditApplication" asp-route-id="@JobApplication.ID">Edit</a>
+                        <a class="btn btn-danger" asp-action="DeleteApplication" asp-route-id="@JobApplication.ID">Delete</a>
                     </td>
                 </tr>
             }
