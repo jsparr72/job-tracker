@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 using JobTracker.Models;
 
 namespace JobTracker.Controllers;
@@ -31,6 +32,7 @@ public class HomeController : Controller
         return View();
     }
 
+    [Authorize] // Can only be accessed when logged in
     public IActionResult Applications()
     {
         var ApplicationsTable = _context.Job_Applications.ToList();
