@@ -13,7 +13,7 @@ namespace JobTracker.Models
 
         }
 
-        public DbSet<JobApplication> Job_Applications { get; set; } // Job Application Table
-        public DbSet<User> User_Accounts { get; set; } // Table holding user account info
+        public DbSet<JobApplication> JobApplications { get; set; } // Job Application Table
+        public DbSet<User> UserAccounts { get; set; } // Table holding user account info
     }
 }

@@ -1,34 +1,46 @@
+@using Microsoft.AspNetCore.Identity;
+@using JobTracker.ViewModels;
+@model CreateApplicationViewModel;
+
 @{
     ViewData["Title"] = "Create Application";
 }
-
-@model JobTracker.Models.JobApplication
 
 <div class="text-center">
     <h1 class="display-4">Add an Application</h1>
 </div>
 
-<form asp-action="NewApplication" asp-controller="Home">
-    <input hidden class="form-control" type="number" asp-for="ID"/>
-    
-    <input hidden class="form-control" type="number" asp-for="UserId"/>
+<form asp-action="CreateApplication" asp-controller="Home" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-    <label class="mt-4">Company</label>
-    <input class="form-control" type="text" placeholder="Enter name of company" asp-for="Company"/>
+    <label asp-for="Company" class="form-label mt-4"></label>
+    <span asp-validation-for="Company" class="text-danger"></span>
+    <input asp-for="Company" class="form-control" type="text" placeholder="Enter name of company"/>
 
-    <label class="mt-4">Job Title</label>
-    <input class="form-control" type="text" placeholder="Enter job title" asp-for="JobTitle"/>
+    <label asp-for="JobTitle" class="form-label mt-4"></label>
+    <span asp-validation-for="JobTitle" class="text-danger"></span>
+    <input asp-for="JobTitle" class="form-control" type="text" placeholder="Enter job title"/>
 
-    <label class="mt-4">Status</label>
-    <select class="form-control" asp-items="JobApplication.Statuses" asp-for="Status"></select>
+    <label asp-for="Status" class="form-label mt-4"></label>
+    <span asp-validation-for="Status" class="text-danger"></span>
+    <select asp-for="Status" class="form-control" asp-items="JobApplication.Statuses">
         <option value="">--Select Status--</option>
     </select>
 
-    <label class="mt-4">Application Date</label>
-    <input class="form-control" type="date" asp-for="ApplicationDate"/>
+    <label asp-for="ApplicationDate" class="form-label mt-4"></label>
+    <input asp-for="ApplicationDate" class="form-control" type="date"/>
 
-    <label class="mt-4">Notes</label>
-    <input class="form-control" type="text" placeholder="" asp-for="Notes"/>
+    <label asp-for="Salary" class="form-label mt-4"></label>
+    <input asp-for="Salary" class="form-control" type="text" placeholder=""/>
+
+    <label asp-for="Notes" class="form-label mt-4"></label>
+    <input asp-for="Notes" class="form-control" type="text" placeholder=""/>
 
     <button class="btn btn-primary mt-4" type="submit">Submit</button>
 </form>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");
+    }
+}
