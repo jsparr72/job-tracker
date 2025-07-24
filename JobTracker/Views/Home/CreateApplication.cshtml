@@ -10,7 +10,8 @@
     <h1 class="display-4">Add an Application</h1>
 </div>
 
-<form asp-action="CreateApplication" asp-controller="Home" method="post">
+<form asp-action="CreateApplication" asp-controller="Home">
+    @Html.AntiForgeryToken()
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
     <label asp-for="Company" class="form-label mt-4"></label>

@@ -85,8 +85,64 @@ public class HomeController : Controller
     [Authorize]
     public IActionResult EditApplication(int ID)
     {
-        var applicationInDatabase = _context.JobApplications.SingleOrDefault(application => application.ID == ID);
-        return View(applicationInDatabase);
+        var userId = _UserManager.GetUserId(User);
+        var appInDatabase = _context.JobApplications.SingleOrDefault(application => application.ID == ID);
+
+        if (appInDatabase == null)
+        {
+            return NotFound();
+        }
+
+        var model = new CreateApplicationViewModel // retrieve info to start form with
+        {
+            Company = appInDatabase.Company,
+            JobTitle = appInDatabase.JobTitle,
+            Status = appInDatabase.Status,
+            ApplicationDate = appInDatabase.ApplicationDate,
+            Salary = appInDatabase.Salary,
+            Notes = appInDatabase.Notes
+        };
+
+        return View(model);
+    }
+
+    [HttpPost]
+    [Authorize]
+    public async Task<IActionResult> EditApplication(CreateApplicationViewModel model, int ID)
+    {
+   
+        if (ModelState.IsValid)
+        {
+            var userId = _UserManager.GetUserId(User);
+            var appInDatabase = _context.JobApplications.SingleOrDefault(application => application.ID == ID);
+
+            if (appInDatabase == null)
+            {
+                return NotFound(); // Somehow the wrong application id was sent in
+            }
+            else if (appInDatabase.UserId != userId)
+            {
+                return Unauthorized(); // User does not own the application trying to be edited
+            }
+
+            {
+                appInDatabase.UserId = userId;
+                appInDatabase.Company = model.Company;
+                appInDatabase.JobTitle = model.JobTitle;
+                appInDatabase.Status = model.Status;
+                appInDatabase.ApplicationDate = model.ApplicationDate;
+                appInDatabase.Salary = model.Salary;
+                appInDatabase.Notes = string.IsNullOrWhiteSpace(model.Notes) ? null : model.Notes;
+            };
+            _context.JobApplications.Update(appInDatabase);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Applications");
+        }
+        else
+        {
+            ModelState.AddModelError("", "Something went wrong, try again");
+            return View(model);
+        }
     }
 
     [Authorize]
@@ -97,13 +153,6 @@ public class HomeController : Controller
         _context.SaveChanges();
         return RedirectToAction("Applications");
     }
-
-    // public IActionResult NewApplication(JobApplication model) // When a new application is submitted through form
-    // {
-    //     _context.JobApplications.Add(model);
-    //     _context.SaveChanges();
-    //     return RedirectToAction("Applications");
-    // }
 
     public IActionResult ModifyApplication(JobApplication model) // When an application is being edited
     {
