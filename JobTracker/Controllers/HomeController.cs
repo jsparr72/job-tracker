@@ -41,11 +41,31 @@ public class HomeController : Controller
     [Authorize] // Can only be accessed when logged in
     public async Task<IActionResult> Applications()
     {
+        // Show only the user's applications
         var userId = _UserManager.GetUserId(User);
         var ApplicationsTable = await _context.JobApplications.
         Where(application => application.UserId == userId).ToListAsync();
 
         return View(ApplicationsTable);
+    }
+
+    [Authorize]
+    public async Task<IActionResult> Search(string userSearch)
+    {
+        var userId = _UserManager.GetUserId(User);
+
+        // Display only the user's applications where at least one
+        // of the fields match their search
+        var SearchResultTable = await _context.JobApplications.
+        Where(app => app.UserId == userId &&
+        (app.Company.ToLower().Contains(userSearch.ToLower()) ||
+        app.JobTitle.ToLower().Contains(userSearch.ToLower()) ||
+        app.Status.ToLower().Contains(userSearch.ToLower()) ||
+        (app.Salary != null && app.Salary.ToLower().Contains(userSearch.ToLower())) ||
+        (app.Notes != null && app.Notes.ToLower().Contains(userSearch.ToLower()))))
+        .ToListAsync();
+
+        return View(SearchResultTable);
     }
 
     [Authorize]
