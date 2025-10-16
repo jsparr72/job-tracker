@@ -10,6 +10,9 @@ The purpose of the web platform is to allow users to track applications they've 
 - Users can add, view, edit, and delete applications.
 - Search functionality to find specific applications quicker
 
+## Demo Video
+[![Video Title](https://img.youtube.com/vi/xr4Qy7bztZ8/0.jpg)](https://www.youtube.com/watch?v=xr4Qy7bztZ8)
+
 ## To Do
 This project is not yet fully complete. There is a little bit of work left before I'd consider the project complete:
 - Modify password changing functionality to be more secure
